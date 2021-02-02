@@ -30,52 +30,14 @@ namespace vault_transit_engine_example.Controllers
         [HttpPost]
         public async Task<string> PostAsync(PinReset pinReset)
         {
-            // Encrypt with Vault Transit Engine
+            Request.Headers.TryGetValue("encryptionKeyId", out var encryptionKeyId);
+            Request.Headers.TryGetValue("encryptionKeyVersion", out var encryptionKeyVersion);
 
-            //var keyName = "test_key";
-
-            //var context = "context1";
-            //var plainText = "raja";
-            //var encodedPlainText = Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
-            //var encodedContext = Convert.ToBase64String(Encoding.UTF8.GetBytes(context));
-
-            //var encryptOptions = new EncryptRequestOptions
-            //{
-            //    Base64EncodedPlainText = encodedPlainText,
-            //    Base64EncodedContext = encodedContext,
-            //};
-
-            //Secret<EncryptionResponse> encryptionResponse = await _authenticatedVaultClient.V1.Secrets.Transit.EncryptAsync(keyName, encryptOptions);
-            //string cipherText = encryptionResponse.Data.CipherText;
-
-            var vaultAddress = System.Environment.GetEnvironmentVariable("VAULT_ADDR");
-            var vaultAuthMethod = System.Environment.GetEnvironmentVariable("VAULT_AUTH_METHOD");
-
-            //if (vaultAuthMethod == "token")
-            //{
-
-            //    vaultClient = new VaultClient(vaultClientSettings);
-            //}
+            var transitKey = encryptionKeyId.First();
+            var transitKeyVersion = encryptionKeyVersion.First();
 
 
-            var keyName = "test_key";
-
-            var context = "context1";
-            var plainText = "raja";
-            var encodedPlainText = Convert.ToBase64String(Encoding.UTF8.GetBytes(plainText));
-            var encodedContext = Convert.ToBase64String(Encoding.UTF8.GetBytes(context));
-
-            var encryptOptions = new EncryptRequestOptions
-            {
-                Base64EncodedPlainText = encodedPlainText,
-                Base64EncodedContext = encodedContext,
-            };
-
-            Secret<EncryptionResponse> encryptionResponse = await vaultClient.V1.Secrets.Transit.EncryptAsync(keyName, encryptOptions);
-            string cipherText = encryptionResponse.Data.CipherText;
-
-
-
+            var cipherText = await _vaultWrapper.EncryptAsync(pinReset.CardNumber, transitKey, Int32.Parse(transitKeyVersion));
 
             return cipherText;
         }

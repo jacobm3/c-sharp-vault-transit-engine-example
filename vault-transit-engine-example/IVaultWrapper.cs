@@ -3,6 +3,6 @@ namespace vault_transit_engine_example
 {
     public interface IVaultWrapper
     {
-        void Encrypt();
+        System.Threading.Tasks.Task<string> EncryptAsync(string field, string transitKeyName, int transitKeyVersion);
     }
 }
