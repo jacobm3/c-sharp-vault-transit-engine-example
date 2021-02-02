@@ -1,0 +1,50 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-app-deployment
+  labels:
+    app: dotnet-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-app
+  template:
+    metadata:
+      labels:
+        app: dotnet-app
+    spec:
+      serviceAccountName: dotnet-app    
+      containers:
+      - name: dotnet-app
+        image: gcr.io/testing-268014/dotnet-app:latest
+        imagePullPolicy: "Always"
+        args: ["dotnet", "/app/out/vault-transit-engine-example.dll"]
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: "http://+:80"
+        - name: VAULT_ADDR
+          value: "https://vault-cluster.vault.11eb5aaf-7f10-27fb-8c33-0242ac110016.aws.hashicorp.cloud:8200"
+        - name: VAULT_AUTH_METHOD
+          value: "kubernetes"
+        - name: VAULT_NAMESPACE
+          value: "admin"
+        - name: VAULT_ROLE
+          value: "dotnet-app"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-app-svc
+  labels:
+    app: dotnet-app
+    service: dotnet-app-svc
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    service: dotnet-app-svc

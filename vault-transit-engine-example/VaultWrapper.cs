@@ -17,6 +17,7 @@ namespace vault_transit_engine_example
         {
             var vaultAddress = System.Environment.GetEnvironmentVariable("VAULT_ADDR");
             var vaultAuthMethod = System.Environment.GetEnvironmentVariable("VAULT_AUTH_METHOD");
+            var vaultNamespace = System.Environment.GetEnvironmentVariable("VAULT_NAMESPACE");
 
             IAuthMethodInfo authMethod = null;
 
@@ -26,12 +27,17 @@ namespace vault_transit_engine_example
             } else if (vaultAuthMethod == "kubernetes")
             {
                 string vaultRole = System.Environment.GetEnvironmentVariable("VAULT_ROLE");
-                string jwt = System.IO.File.ReadAllText("/var/run/secrets/tokens/vault-token");
+                string jwt = System.IO.File.ReadAllText("/var/run/secrets/kubernetes.io/serviceaccount/token");
 
                 authMethod = new KubernetesAuthMethodInfo(vaultRole, jwt);
             }
 
             var vaultClientSettings = new VaultClientSettings(vaultAddress, authMethod);
+
+            if (vaultNamespace != "")
+            {
+                vaultClientSettings.Namespace = vaultNamespace;
+            }
 
             vaultClient = new VaultClient(vaultClientSettings);
         }

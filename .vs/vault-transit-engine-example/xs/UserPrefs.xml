@@ -1,24 +1,28 @@
 ﻿<Properties StartupConfiguration="{A2669945-246C-4267-BFC8-964DE0458471}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="vault-transit-engine-example/VaultWrapper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="README.md">
     <Files>
-      <File FileName="vault-transit-engine-example/Controllers/PinResetController.cs" Line="40" Column="13" />
-      <File FileName="vault-transit-engine-example/Properties/launchSettings.json" Line="29" Column="51" />
-      <File FileName="vault-transit-engine-example/VaultWrapper.cs" Line="43" Column="49" />
-      <File FileName="vault-transit-engine-example/Startup.cs" Line="31" Column="79" />
-      <File FileName="vault-transit-engine-example/Program.cs" Line="1" Column="1" />
+      <File FileName="vault-transit-engine-example/Models/PinReset.cs" Line="1" Column="1" IsPinned="True" />
+      <File FileName="vault-transit-engine-example/Controllers/PinResetController.cs" Line="40" Column="1" />
+      <File FileName="vault-transit-engine-example/VaultWrapper.cs" Line="30" Column="109" />
+      <File FileName="vault-transit-engine-example/Startup.cs" />
+      <File FileName="vault-transit-engine-example/Program.cs" />
       <File FileName="vault-transit-engine-example/appsettings.json" Line="1" Column="1" />
-      <File FileName="vault-transit-engine-example/IVaultWrapper.cs" Line="3" Column="2" />
-      <File FileName="vault-transit-engine-example/Models/PinReset.cs" Line="1" Column="1" />
+      <File FileName="vault-transit-engine-example/IVaultWrapper.cs" Line="1" Column="1" />
+      <File FileName="deployment.yaml" Line="17" Column="41" />
+      <File FileName="vault-transit-engine-example/Properties/launchSettings.json" Line="27" Column="1" />
+      <File FileName="README.md" Line="59" Column="42" />
+      <File FileName="dotnet-app.hcl" Line="7" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
           <Node name="vault-transit-engine-example" expanded="True">
+            <Node name="README.md" selected="True" />
             <Node name="vault-transit-engine-example" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
-              <Node name="VaultWrapper.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -29,9 +33,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/peytoncasper/Documents/vault-transit-engine-example/vault-transit-engine-example/Controllers/PinResetController.cs" relfile="vault-transit-engine-example/Controllers/PinResetController.cs" line="40" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
