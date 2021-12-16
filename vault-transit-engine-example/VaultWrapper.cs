@@ -60,8 +60,12 @@ namespace vault_transit_engine_example
             Secret<CertificateCredentials> certSecret = await vaultClient.V1.Secrets.PKI.GetCredentialsAsync(certName, certificateCredentialsRequestOptions);
 
             string privateKeyContent = certSecret.Data.PrivateKeyContent;
+            string certificateContent = certSecret.Data.CertificateContent;
 
-            return privateKeyContent;
+            string pair = certificateContent + "\n" + privateKeyContent;
+
+            return pair;
+
         }
         
 
