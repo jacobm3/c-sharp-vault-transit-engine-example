@@ -6,6 +6,7 @@ using VaultSharp.V1.AuthMethods.Kubernetes;
 using VaultSharp.V1.AuthMethods.Token;
 using VaultSharp.V1.Commons;
 using VaultSharp.V1.SecretsEngines.Transit;
+using VaultSharp.V1.SecretsEngines.PKI;
 
 namespace vault_transit_engine_example
 {
@@ -41,6 +42,17 @@ namespace vault_transit_engine_example
 
             vaultClient = new VaultClient(vaultClientSettings);
         }
+
+        public async System.Threading.Tasks.Task<string> GenerateCertificate (string certName, string commonName)
+        {
+            var certificateCredentialsRequestOptions = new CertificateCredentialsRequestOptions {CommonName = commonName};
+            Secret<CertificateCredentials> certSecret = await vaultClient.V1.Secrets.PKI.GetCredentialsAsync(certName, certificateCredentialsRequestOptions);
+
+            string privateKeyContent = certSecret.Data.PrivateKeyContent;
+
+            return privateKeyContent;
+        }
+        
 
         public async System.Threading.Tasks.Task<string> EncryptAsync(string field, string transitKeyName, int transitKeyVersion)
         {

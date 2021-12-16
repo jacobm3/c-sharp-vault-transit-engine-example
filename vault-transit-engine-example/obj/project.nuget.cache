@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6cnAEGYMsmDtD6wEYBAQEE4pRfgKUXtqvMc5G2+jClsWwPxlyONzHJdzEBFHnORTp1ALetcXgeNC4AnsTTRTGw==",
+  "dgSpecHash": "OGlGcg7gb/OlT0+BW2e7mojNfLF6kFC4LogGcZMbm/KCI4W0BerkuXmB4VXMerNzYu4evSbMjvzgk/1VYwUNTQ==",
   "success": true,
-  "projectFilePath": "/Users/peytoncasper/Documents/vault-transit-engine-example/vault-transit-engine-example/vault-transit-engine-example.csproj",
+  "projectFilePath": "/Users/peytoncas/Documents/c-sharp-vault-transit-engine-exmaple/vault-transit-engine-example/vault-transit-engine-example.csproj",
   "expectedPackageFiles": [
-    "/Users/peytoncasper/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
-    "/Users/peytoncasper/.nuget/packages/vaultsharp/1.6.0.2/vaultsharp.1.6.0.2.nupkg.sha512"
+    "/Users/peytoncas/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/Users/peytoncas/.nuget/packages/vaultsharp/1.6.0.2/vaultsharp.1.6.0.2.nupkg.sha512",
+    "/Users/peytoncas/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.18/microsoft.netcore.app.host.osx-x64.3.1.18.nupkg.sha512"
   ],
   "logs": []
 }
