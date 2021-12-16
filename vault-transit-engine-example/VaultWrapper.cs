@@ -33,7 +33,18 @@ namespace vault_transit_engine_example
                 authMethod = new KubernetesAuthMethodInfo(vaultRole, jwt);
             }
 
-            var vaultClientSettings = new VaultClientSettings(vaultAddress, authMethod);
+            var vaultClientSettings = new VaultClientSettings(vaultAddress, authMethod)         {
+               Namespace = "mynamespace",
+               MyHttpClientProviderFunc = handler => {
+                    handler.ClientCertificateOptions = System.Net.Http.ClientCertificateOption.Manual;
+                    handler.ServerCertificateCustomValidationCallback = 
+                        (httpRequestMessage, cert, cetChain, policyErrors) =>
+                    {
+                        return true;
+                    };
+                   return new System.Net.Http.HttpClient(handler);
+               }
+           };
 
             if (vaultNamespace != "")
             {
